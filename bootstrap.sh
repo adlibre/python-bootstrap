@@ -3,7 +3,7 @@
 #
 # Python Virtualenv Bootstrap Script
 #
-# Creates a named virtualenv and optionally installs the specified packages with pip. This should
+# Creates a named virtualenv and optionally installs specified packages with pip. This should
 # run anywhere as long as bash/python/curl/tar are installed.
 #
 # Andrew Cutler - Adlibre Pty Ltd 2013
@@ -49,9 +49,6 @@ function main() {
 
     # Create the first "bootstrap" environment.
     $PYTHON virtualenv-$VERSION/virtualenv.py -q $ENV_OPTS $ENV_NAME
-
-    # Install virtualenv into the environment.
-    # $ENV_NAME/bin/pip install -q virtualenv-$VERSION.tar.gz
 
     # Install additional packages into the environment
     for package in $@; do

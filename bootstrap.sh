@@ -63,7 +63,14 @@ function main() {
     rm -rf virtualenv-$VERSION && rm -f virtualenv-$VERSION.tar.gz
 
     # Finished
-    echo "Created $ENV_NAME."
+    echo ""
+    echo "Virtualenv $ENV_NAME created."
+    echo ""
+    echo "Run"
+    echo "   $ source $ENV_NAME/bin/activate && cd $ENV_NAME"
+    echo "to enter the virtual environment and"
+    echo "   $ deactivate"
+    echo "to exit the environment."
 }
 
 # Check ENV_NAME set

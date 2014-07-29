@@ -11,13 +11,13 @@
 # Inspired by http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python 
 
 #
-# Config
+# Config: These can be overriden via EXPORT
 #
 
-VERSION=1.11.6  # Version of virtualenv
+ENV_VERSION=${ENV_VERSION-1.11.6}  # Version of virtualenv
 ENV_NAME=$1  # Name of environment
-ENV_OPTS='--no-site-packages --distribute'  
-PYTHON=$(which python)  # Python interpreter to use
+ENV_OPTS=${ENV_OPTS-'--no-site-packages --distribute'}
+PYTHON_BINARY=${PYTHON_BINARY-$(which python)}  # Python interpreter to use
 URL_BASE=https://pypi.python.org/packages/source/v/virtualenv   # URL to virtualenv package source 
 
 #
@@ -38,17 +38,17 @@ function main() {
     fi 
 
     # Test for python
-    if [ -d $PYTHON ]; then
+    if [ -d $PYTHON_BINARY ]; then
         echo "Python interpreter not found."
         exit 128
     fi
 
     # Fetch virtualenv
-    curl --silent -O $URL_BASE/virtualenv-$VERSION.tar.gz
-    tar -xzf virtualenv-$VERSION.tar.gz
+    curl --silent -O $URL_BASE/virtualenv-$ENV_VERSION.tar.gz
+    tar -xzf virtualenv-$ENV_VERSION.tar.gz
 
     # Create the first "bootstrap" environment.
-    $PYTHON virtualenv-$VERSION/virtualenv.py -q $ENV_OPTS $ENV_NAME
+    $PYTHON_BINARY virtualenv-$ENV_VERSION/virtualenv.py -q $ENV_OPTS $ENV_NAME
 
     # Install additional packages into the environment
     for package in $@; do
@@ -57,7 +57,7 @@ function main() {
     done
 
     # Remove downloaded source
-    rm -rf virtualenv-$VERSION && rm -f virtualenv-$VERSION.tar.gz
+    rm -rf virtualenv-$ENV_VERSION && rm -f virtualenv-$ENV_VERSION.tar.gz
 
     # Finished
     echo ""

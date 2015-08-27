@@ -14,11 +14,13 @@
 # Config: These can be overriden via EXPORT
 #
 
-ENV_VERSION=${ENV_VERSION-13.1.0}  # Version of virtualenv
+ENV_VERSION=${ENV_VERSION-13.1.2}  # Version of virtualenv
 ENV_NAME=$1  # Name of environment
 ENV_OPTS=${ENV_OPTS-'--no-site-packages --distribute'}
 PYTHON_BINARY=${PYTHON_BINARY-$(which python)}  # Python interpreter to use
 URL_BASE=https://pypi.python.org/packages/source/v/virtualenv   # URL to virtualenv package source 
+
+set -e  # Trap errors
 
 #
 # Functions

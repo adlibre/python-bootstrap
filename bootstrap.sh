@@ -14,7 +14,7 @@
 # Config: These can be overriden via EXPORT
 #
 
-ENV_VERSION=${ENV_VERSION-15.0.2}  # Version of virtualenv
+ENV_VERSION=${ENV_VERSION-15.0.1}  # Version of virtualenv
 ENV_NAME=$1  # Name of environment
 ENV_OPTS=${ENV_OPTS-'--no-site-packages --distribute'}
 PYTHON_BINARY=${PYTHON_BINARY-$(which python)}  # Python interpreter to use

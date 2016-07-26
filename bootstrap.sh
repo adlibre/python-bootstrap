@@ -6,7 +6,7 @@
 # Creates a named virtualenv and optionally installs specified packages with pip. This should
 # run anywhere as long as bash/python/curl/tar are installed.
 #
-# Andrew Cutler - Adlibre Pty Ltd 2013 - 2015
+# Andrew Cutler - Adlibre Pty Ltd 2013 - 2016
 #
 # Inspired by http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python 
 
@@ -14,7 +14,7 @@
 # Config: These can be overriden via EXPORT
 #
 
-ENV_VERSION=${ENV_VERSION-13.1.2}  # Version of virtualenv
+ENV_VERSION=${ENV_VERSION-15.0.2}  # Version of virtualenv
 ENV_NAME=$1  # Name of environment
 ENV_OPTS=${ENV_OPTS-'--no-site-packages --distribute'}
 PYTHON_BINARY=${PYTHON_BINARY-$(which python)}  # Python interpreter to use

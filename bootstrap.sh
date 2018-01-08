@@ -6,19 +6,19 @@
 # Creates a named virtualenv and optionally installs specified packages with pip. This should
 # run anywhere as long as bash/python/curl/tar are installed.
 #
-# Andrew Cutler - Adlibre Pty Ltd 2013 - 2016
+# Andrew Cutler - Adlibre Pty Ltd 2013 - 2018
 #
-# Inspired by http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python 
+# Inspired by http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python
 
 #
 # Config: These can be overriden via EXPORT
 #
 
-ENV_VERSION=${ENV_VERSION-15.0.1}  # Version of virtualenv
+ENV_VERSION=${ENV_VERSION-15.1.0}  # Version of virtualenv
 ENV_NAME=$1  # Name of environment
 ENV_OPTS=${ENV_OPTS-'--no-site-packages --distribute'}
 PYTHON_BINARY=${PYTHON_BINARY-$(which python)}  # Python interpreter to use
-URL_BASE=https://pypi.python.org/packages/source/v/virtualenv   # URL to virtualenv package source 
+URL_BASE=https://files.pythonhosted.org/packages/source/v/virtualenv   # URL to virtualenv package source
 
 set -e  # Trap errors
 
@@ -27,7 +27,7 @@ set -e  # Trap errors
 #
 
 function showUsage() {
-    echo "Usage: bootstrap.sh <environment-name> <package1> ... <packagex>" 
+    echo "Usage: bootstrap.sh <environment-name> <package1> ... <packagex>"
     exit 0
 }
 
@@ -37,7 +37,7 @@ function main() {
     if [ -d $ENV_NAME ]; then
         echo "Environment $ENV_NAME already exists."
         exit 128
-    fi 
+    fi
 
     # Test for python
     if [ -d $PYTHON_BINARY ]; then
@@ -46,7 +46,7 @@ function main() {
     fi
 
     # Fetch virtualenv
-    curl --silent -O $URL_BASE/virtualenv-$ENV_VERSION.tar.gz
+    curl --silent --location -O $URL_BASE/virtualenv-$ENV_VERSION.tar.gz
     tar -xzf virtualenv-$ENV_VERSION.tar.gz
 
     # Create the first "bootstrap" environment.

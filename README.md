@@ -15,3 +15,7 @@ To create a virtualenv _foo_ with the package _Django_ installed:
 To create a virtualenv _tms_ with _Adlibre TMS_ installed from source:
 
     curl --silent https://raw.githubusercontent.com/adlibre/python-bootstrap/master/bootstrap.sh | bash -s tms git+git://github.com/adlibre/Adlibre-TMS.git
+
+Run locally, create an empty virtualenv with Python 3.6:
+
+    PYTHON_BINARY=python3.6 ./bootstrap.sh .venv

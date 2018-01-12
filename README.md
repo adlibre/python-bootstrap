@@ -2,7 +2,11 @@
 
 Easily create a Python virtual environment and deploy Python projects.
 
-## Examples
+## Configuration
+
+See [bootstrap.sh](https://github.com/adlibre/python-bootstrap/blob/master/bootstrap.sh) source for all configuration options.
+
+## Usage Examples
 
 To create a virtualenv _foo_ with the package _Django_ installed:
 
